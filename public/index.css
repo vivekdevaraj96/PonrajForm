@@ -1,0 +1,9 @@
+.btn-collapse{
+    width: 100%;
+    background-color: #7D4CDB;
+    text-align: left;
+}
+
+.btn-collapse:hover{
+    background-color: #7D4CDB;
+}
