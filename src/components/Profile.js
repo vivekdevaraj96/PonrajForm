@@ -9,6 +9,24 @@ const Profile = () => {
     email: "",
     role: "",
     organization_name: "",
+    phone_number: "",
+    alternate_phone_number: "",
+    residential_address: {
+      address_line_1: "",
+      address_line_2: "",
+      city: "",
+      state: "",
+      country: "",
+      pincode: "",
+    },
+    permanent_address: {
+      address_line_1: "",
+      address_line_2: "",
+      city: "",
+      state: "",
+      country: "",
+      pincode: "",
+    },
     education: [
       {
         type: "",
@@ -25,42 +43,92 @@ const Profile = () => {
       },
     ],
     certifications: [
-      { 
-        domain: "", 
-        certificate_name: "", 
-        received_date: "", 
-        expiry_date: "" 
+      {
+        domain: "",
+        certificate_name: "",
+        received_date: "",
+        expiry_date: "",
       },
     ],
     experience: [
-      { 
-        company_name: "", 
-        years_of_experience: "", 
-        role: "" 
-      }],
+      {
+        company_name: "",
+        years_of_experience: "",
+        role: "",
+      },
+    ],
   });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm({ ...formGroup, [name]: value });
+  };
+
+  const handle_residential_address = (e) => {
+    const { name, value } = e.target;
+    const updated_address = { ...formGroup.residential_address, [name]: value };
+    setForm({ ...formGroup, residential_address: { ...updated_address } });
+  };
+
+  const handle_permanent_address = (e) => {
+    const { name, value } = e.target;
+    console.log(name);
+    console.log(value);
+    const updated_address = { ...formGroup.permanent_address, [name]: value };
+    setForm({ ...formGroup, permanent_address: { ...updated_address } });
+  };
   return (
     <div>
       <Accordion>
         <AccordionPanel label="Personal Details">
           <FormField label="First Name">
-            <TextInput placeholder="First Name" name="first_name" />
+            <TextInput
+              placeholder="First Name"
+              name="first_name"
+              value={formGroup.first_name}
+              onChange={(e) => handleChange(e)}
+            />
           </FormField>
           <FormField label="Last Name">
-            <TextInput placeholder="Last Name" name="last_name" />
+            <TextInput
+              placeholder="Last Name"
+              name="last_name"
+              value={formGroup.last_name}
+              onChange={(e) => handleChange(e)}
+            />
           </FormField>
           <FormField label="User Name" name="user_name">
-            <TextInput name="user_name" disabled placeholder="User Name" />
+            <TextInput
+              name="user_name"
+              placeholder="User Name"
+              value={formGroup.user_name}
+              onChange={(e) => handleChange(e)}
+            />
           </FormField>
           <FormField label="Email">
-            <TextInput placeholder="Email" name="email" />
+            <TextInput
+              placeholder="Email"
+              name="email"
+              value={formGroup.email}
+              onChange={(e) => handleChange(e)}
+            />
           </FormField>
           <FormField label="Role" name="role">
-            <TextInput placeholder="Role" />
+            <TextInput
+              placeholder="Role"
+              name="role"
+              value={formGroup.role}
+              onChange={(e) => handleChange(e)}
+            />
           </FormField>
           <FormField label="Organization" name="organization_name">
-            <TextInput placeholder="Organization" />
+            <TextInput
+              placeholder="Organization"
+              name="organization_name"
+              value={formGroup.organization_name}
+              onChange={(e) => handleChange(e)}
+            />
           </FormField>
         </AccordionPanel>
 
@@ -68,12 +136,22 @@ const Profile = () => {
           <div className="flexing">
             <div className="fourty">
               <FormField label="Phone Number">
-                <TextInput placeholder="Phone Number" />
+                <TextInput
+                  placeholder="Phone Number"
+                  name="phone_number"
+                  value={formGroup.phone_number}
+                  onChange={(e) => handleChange(e)}
+                />
               </FormField>
             </div>
             <div className="fourty">
               <FormField label="Alternate Phone Number">
-                <TextInput placeholder="Alternate Phone Number" />
+                <TextInput
+                  placeholder="Alternate Phone Number"
+                  name="alternate_phone_number"
+                  value={formGroup.alternate_phone_number}
+                  onChange={(e) => handleChange(e)}
+                />
               </FormField>
             </div>
           </div>
@@ -84,58 +162,118 @@ const Profile = () => {
             <div className="fourty">
               <h4>Residential Address</h4>
               <FormField label="Address Line 1">
-                <TextInput placeholder="Address Line 1" />
+                <TextInput
+                  placeholder="Address Line 1"
+                  name="address_line_1"
+                  value={formGroup.residential_address.address_line_1}
+                  onChange={(e) => handle_residential_address(e)}
+                />
               </FormField>
               <FormField label="Address Line 2">
-                <TextInput placeholder="Address Line 3" />
+                <TextInput
+                  placeholder="Address Line 3"
+                  name="address_line_2"
+                  value={formGroup.residential_address.address_line_2}
+                  onChange={(e) => handle_residential_address(e)}
+                />
               </FormField>
               <FormField label="City">
-                <TextInput placeholder="City" />
+                <TextInput
+                  placeholder="City"
+                  name="city"
+                  value={formGroup.residential_address.city}
+                  onChange={(e) => handle_residential_address(e)}
+                />
               </FormField>
               <FormField label="State">
-                <TextInput placeholder="State" />
+                <TextInput
+                  placeholder="State"
+                  name="state"
+                  value={formGroup.residential_address.state}
+                  onChange={(e) => handle_residential_address(e)}
+                />
               </FormField>
               <FormField label="Country">
-                <TextInput placeholder="Country" />
+                <TextInput
+                  placeholder="Country"
+                  name="country"
+                  value={formGroup.residential_address.country}
+                  onChange={(e) => handle_residential_address(e)}
+                />
               </FormField>
               <FormField label="Pincode">
-                <TextInput placeholder="Pincode" />
+                <TextInput
+                  placeholder="Pincode"
+                  name="pincode"
+                  value={formGroup.residential_address.pincode}
+                  onChange={(e) => handle_residential_address(e)}
+                />
               </FormField>
             </div>
             <div className="fourty">
               <h4>Permanent Address</h4>
               <FormField label="Address Line 1">
-                <TextInput placeholder="Address Line 1" />
+                <TextInput
+                  placeholder="Address Line 1"
+                  name="address_line_1"
+                  value={formGroup.permanent_address.address_line_1}
+                  onChange={(e) => handle_permanent_address(e)}
+                />
               </FormField>
               <FormField label="Address Line 2">
-                <TextInput placeholder="Address Line 3" />
+                <TextInput
+                  placeholder="Address Line 3"
+                  name="address_line_2"
+                  value={formGroup.permanent_address.address_line_2}
+                  onChange={(e) => handle_permanent_address(e)}
+                />
               </FormField>
               <FormField label="City">
-                <TextInput placeholder="City" />
+                <TextInput
+                  placeholder="City"
+                  name="city"
+                  value={formGroup.permanent_address.city}
+                  onChange={(e) => handle_permanent_address(e)}
+                />
               </FormField>
               <FormField label="State">
-                <TextInput placeholder="State" />
+                <TextInput
+                  placeholder="State"
+                  name="state"
+                  value={formGroup.permanent_address.state}
+                  onChange={(e) => handle_permanent_address(e)}
+                />
               </FormField>
               <FormField label="Country">
-                <TextInput placeholder="Country" />
+                <TextInput
+                  placeholder="Country"
+                  name="country"
+                  value={formGroup.permanent_address.country}
+                  onChange={(e) => handle_permanent_address(e)}
+                />
               </FormField>
               <FormField label="Pincode">
-                <TextInput placeholder="Pincode" />
+                <TextInput
+                  placeholder="Pincode"
+                  name="pincode"
+                  value={formGroup.permanent_address.pincode}
+                  onChange={(e) => handle_permanent_address(e)}
+                />
               </FormField>
             </div>
           </div>
         </AccordionPanel>
-        <Education/>
-        <Skills />
-        <Certifications />
-        <Experience />
+        <Education formGroup={formGroup} setForm={setForm} />
+        <Skills formGroup={formGroup} setForm={setForm} />
+        <Certifications formGroup={formGroup} setForm={setForm} />
+        <Experience formGroup={formGroup} setForm={setForm} />
       </Accordion>
+      <button onClick={() => console.log(formGroup)}>Submit</button>
     </div>
   );
 };
 
-const Education = () => {
- 
+const Education = ({ formGroup, setForm }) => {
   const [data, setData] = useState([
     { type: "", stream: "", passed_out_year: "", percentage: "" },
   ]);
@@ -152,12 +290,15 @@ const Education = () => {
     const onChangeVal = [...data];
     onChangeVal[i][name] = value;
     setData(onChangeVal);
+    setForm({ ...formGroup, education: onChangeVal });
+    console.log(formGroup);
   };
 
   const handleDelete = (i) => {
     const deleteval = [...data];
     deleteval.splice(i, 1);
     setData(deleteval);
+    setForm({ ...formGroup, education: deleteval });
   };
 
   return (
@@ -198,9 +339,9 @@ const Education = () => {
               />
             </FormField>
             {data.length > 1 ? (
-              <button onClick={(i) => handleDelete(i)}>Delete</button>
+              <button onClick={() => handleDelete(i)}>Delete</button>
             ) : (
-              <button onClick={(i) => handleDelete(i)} disabled={true}>
+              <button onClick={() => handleDelete(i)} disabled={true}>
                 Delete
               </button>
             )}
@@ -218,7 +359,7 @@ const Education = () => {
   );
 };
 
-const Skills = () => {
+const Skills = ({ formGroup, setForm }) => {
   const [data, setData] = useState([
     { domain: "", skill: "", skill_level: "" },
   ]);
@@ -232,19 +373,22 @@ const Skills = () => {
     const onChangeVal = [...data];
     onChangeVal[i][name] = value;
     setData(onChangeVal);
+    setForm({ ...formGroup, skills: onChangeVal });
+    console.log(formGroup);
   };
 
   const handleDelete = (i) => {
     const deleteval = [...data];
     deleteval.splice(i, 1);
     setData(deleteval);
+    setForm({ ...formGroup, skills: deleteval });
   };
 
   return (
     <div>
       <AccordionPanel label="Skill Details">
         {data.map((val, i) => (
-          <div className="flexing"  key={i}>
+          <div className="flexing" key={i}>
             <FormField label="Domain" required>
               <TextInput
                 placeholder="Domain"
@@ -270,9 +414,9 @@ const Skills = () => {
               />
             </FormField>
             {data.length > 1 ? (
-              <button onClick={(i) => handleDelete(i)}>Delete</button>
+              <button onClick={() => handleDelete(i)}>Delete</button>
             ) : (
-              <button onClick={(i) => handleDelete(i)} disabled={true}>
+              <button onClick={() => handleDelete(i)} disabled={true}>
                 Delete
               </button>
             )}
@@ -290,7 +434,7 @@ const Skills = () => {
   );
 };
 
-const Certifications = () => {
+const Certifications = ({ formGroup, setForm }) => {
   const [data, setData] = useState([
     { domain: "", certificate_name: "", received_date: "", expiry_date: "" },
   ]);
@@ -307,19 +451,22 @@ const Certifications = () => {
     const onChangeVal = [...data];
     onChangeVal[i][name] = value;
     setData(onChangeVal);
+    setForm({ ...formGroup, certifications: onChangeVal });
+    console.log(formGroup);
   };
 
   const handleDelete = (i) => {
     const deleteval = [...data];
     deleteval.splice(i, 1);
     setData(deleteval);
+    setForm({ ...formGroup, certifications: deleteval });
   };
 
   return (
     <div>
       <AccordionPanel label="Certifications">
         {data.map((val, i) => (
-          <div className="flexing"  key={i}>
+          <div className="flexing" key={i}>
             <FormField label="Domain" required>
               <TextInput
                 placeholder="Domain"
@@ -353,9 +500,9 @@ const Certifications = () => {
               />
             </FormField>
             {data.length > 1 ? (
-              <button onClick={(i) => handleDelete(i)}>Delete</button>
+              <button onClick={() => handleDelete(i)}>Delete</button>
             ) : (
-              <button onClick={(i) => handleDelete(i)} disabled={true}>
+              <button onClick={() => handleDelete(i)} disabled={true}>
                 Delete
               </button>
             )}
@@ -373,7 +520,7 @@ const Certifications = () => {
   );
 };
 
-const Experience = () => {
+const Experience = ({ formGroup, setForm }) => {
   const [data, setData] = useState([
     { company_name: "", years_of_experience: "", role: "" },
   ]);
@@ -387,19 +534,22 @@ const Experience = () => {
     const onChangeVal = [...data];
     onChangeVal[i][name] = value;
     setData(onChangeVal);
+    setForm({ ...formGroup, experience: onChangeVal });
+    console.log(formGroup);
   };
 
   const handleDelete = (i) => {
     const deleteval = [...data];
     deleteval.splice(i, 1);
     setData(deleteval);
+    setForm({ ...formGroup, experience: deleteval });
   };
 
   return (
     <div>
       <AccordionPanel label="Experience Details">
         {data.map((val, i) => (
-          <div className="flexing"  key={i}>
+          <div className="flexing" key={i}>
             <FormField label="Company Name" required>
               <TextInput
                 placeholder="Company Name"
@@ -425,9 +575,9 @@ const Experience = () => {
               />
             </FormField>
             {data.length > 1 ? (
-              <button onClick={(i) => handleDelete(i)}>Delete</button>
+              <button onClick={() => handleDelete(i)}>Delete</button>
             ) : (
-              <button onClick={(i) => handleDelete(i)} disabled={true}>
+              <button onClick={() => handleDelete(i)} disabled={true}>
                 Delete
               </button>
             )}
